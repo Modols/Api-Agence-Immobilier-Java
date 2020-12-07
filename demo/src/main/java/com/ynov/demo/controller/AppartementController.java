@@ -1,6 +1,7 @@
 package com.ynov.demo.controller;
 
 import com.ynov.demo.domain.Appartement;
+import com.ynov.demo.domain.Complexe;
 import com.ynov.demo.service.AppartementService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,12 @@ public class AppartementController {
 
     @GetMapping("/appartements")
     @ResponseStatus(HttpStatus.OK)
+    public List<Appartement> getAppartementsArguments() {
+        return appartementService.getAppartementsArguments();
+    }
+
+    @GetMapping("/appartements/totale")
+    @ResponseStatus(HttpStatus.OK)
     public List<Appartement> getAppartements() {
         return appartementService.getAppartements();
     }
@@ -28,5 +35,17 @@ public class AppartementController {
     @ResponseStatus(HttpStatus.OK)
     public void generateAppartements() {
         appartementService.generateAppartements();
+    }
+
+    @GetMapping("/complexe")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Complexe> getComplexe() { return appartementService.getComplexe(); }
+
+
+
+    @GetMapping("/complexe/generate")
+    @ResponseStatus(HttpStatus.OK)
+    public void generateConcession() {
+        appartementService.generateComplexe();
     }
 }

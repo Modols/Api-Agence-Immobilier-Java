@@ -3,7 +3,7 @@ package com.ynov.demo.domain;
 import javax.persistence.*;
 
 @Entity
-//@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
 public class Appartement {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -19,6 +19,15 @@ public class Appartement {
 
     private String name;
     private int nb_couchage;
+
+    public int getSurface() {
+        return surface;
+    }
+
+    public void setSurface(int surface) {
+        this.surface = surface;
+    }
+
     private int surface;
 
 
