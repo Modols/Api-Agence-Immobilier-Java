@@ -28,7 +28,7 @@ public class AppartementController {
     }
 
 
-    @GetMapping("/appartement/create/{name}/{surface}/{nb_couchage}/{equipe_bebe}/{climatisation}/{complexe_id}")
+    @PostMapping("/appartement/create/{name}/{surface}/{nb_couchage}/{equipe_bebe}/{climatisation}/{complexe_id}")
     @ResponseStatus(HttpStatus.OK)
     public Appartement createAppartement(@PathVariable String name, @PathVariable int surface,
                                          @PathVariable int nb_couchage, @PathVariable boolean equipe_bebe,
@@ -39,7 +39,7 @@ public class AppartementController {
     }
 
 
-    @GetMapping("/appartement/update/{id}/{name}/{surface}/{nb_couchage}/{equipe_bebe}/{climatisation}/{complexe_id}")
+    @PutMapping("/appartement/update/{id}/{name}/{surface}/{nb_couchage}/{equipe_bebe}/{climatisation}/{complexe_id}")
     @ResponseStatus(HttpStatus.OK)
     public Appartement updateAppartement(@PathVariable Long id, @PathVariable String name, @PathVariable int surface,
                                          @PathVariable int nb_couchage, @PathVariable boolean equipe_bebe,
@@ -49,7 +49,7 @@ public class AppartementController {
 
     }
 
-    @GetMapping("/appartement/delete/{id}")
+    @DeleteMapping("/appartement/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAppartement(@PathVariable Long id) {
          appartementService.deleteApp(id);

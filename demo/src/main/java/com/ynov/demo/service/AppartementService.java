@@ -22,76 +22,9 @@ public class AppartementService {
         this.complexeRepository = complexeRepository;
     }
 
-    public void generateAppartements() {
-        Appartement app = new Appartement();
-        app.setName("pose");
-        appartementRepository.save(app);
-
-        app = new Appartement();
-        app.setName("wsh");
-        appartementRepository.save(app);
-    }
-
-//    @Transactional
-//    public void generateComplexe() {
-//        Complexe complexe = new Complexe();
-//        complexe.setName("Complexe_" + Math.random());
-//        complexe.setType_complexe("Village Vacance");
-//        complexeRepository.save(complexe);
-//
-//        complexe.setAppartements(new HashSet<>());
-//        Appartement app = new Appartement();
-//        app.setName("APP-" + Math.random());
-//        app.setSurface(25);
-//        app.setEquipe_bebe(true);
-//        app.setClimatisation(true);
-//        app.setNb_couchage(2);
-//        appartementRepository.save(app);
-//        complexe.getAppartements().add(app);
-//
-//        app = new Appartement();
-//        app.setName("APP2-" + Math.random());
-//        app.setSurface(12);
-//        app.setEquipe_bebe(false);
-//        app.setClimatisation(false);
-//        app.setNb_couchage(1);
-//
-//        appartementRepository.save(app);
-//        complexe.getAppartements().add(app);
-////        complexeRepository.save(complexe);
-//    }
-
-
-
-
-//    public List<Appartement> getAppartementsArguments() {
-//        return appartementRepository.findWithAllArguments();
-//    }
-
     public List<Appartement> getAllAppartements() {
         return appartementRepository.findAll();
     }
-
-
-//    public Appartement updateApp(Long id, int surface, int nb_couchage, boolean bb, boolean clim){
-//
-//    }
-
-
-//        Complexe complexe = new Complexe();
-//        complexe.setName("Complexe_" + Math.random());
-//        complexe.setType_complexe("Village Vacance");
-//        complexeRepository.save(complexe);
-//
-//        complexe.setAppartements(new HashSet<>());
-//        Appartement app = new Appartement();
-//        app.setName("APP-" + Math.random());
-//        app.setSurface(25);
-//        app.setEquipe_bebe(true);
-//        app.setClimatisation(true);
-//        app.setNb_couchage(2);
-//        appartementRepository.save(app);
-//        complexe.getAppartements().add(app);
 
     @Transactional
     public Appartement createApp(String name, int surface, int nb_couchage, boolean equipe_bebe,

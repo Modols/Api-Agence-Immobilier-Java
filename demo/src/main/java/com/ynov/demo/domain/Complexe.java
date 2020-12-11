@@ -1,10 +1,13 @@
 package com.ynov.demo.domain;
 
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@DynamicUpdate
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
 public class Complexe {
     @Id

@@ -23,10 +23,16 @@ public class ComplexeController {
     public List<Complexe> getComplexe() { return complexeservice.getComplexe(); }
 
 
-    @GetMapping("/complexe/create/{name}/{type_complexe}/{pays}/{region}/{adresse}/{gps}/{type_lieu}")
+    @PostMapping("/complexe/create/{name}/{type_complexe}/{pays}/{region}/{adresse}/{gps}/{type_lieu}")
     @ResponseStatus(HttpStatus.OK)
     public Complexe createComplexe(@PathVariable String name, @PathVariable String type_complexe, @PathVariable String pays, @PathVariable String region, @PathVariable String adresse, @PathVariable String gps, @PathVariable String type_lieu) {
         return complexeservice.createComplexe(name, type_complexe, pays, region, adresse, gps, type_lieu);
+    }
+
+    @PutMapping("/complexe/update/{id}/{name}/{type_complexe}/{pays}/{region}/{adresse}/{gps}/{type_lieu}")
+    @ResponseStatus(HttpStatus.OK)
+    public Complexe updateComplexe(@PathVariable Long id, @PathVariable String name, @PathVariable String type_complexe, @PathVariable String pays, @PathVariable String region, @PathVariable String adresse, @PathVariable String gps, @PathVariable String type_lieu) {
+        return complexeservice.updateComplexe(id, name, type_complexe, pays, region, adresse, gps, type_lieu);
     }
 
 }
