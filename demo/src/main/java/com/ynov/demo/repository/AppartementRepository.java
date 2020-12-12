@@ -18,6 +18,11 @@ public interface AppartementRepository extends JpaRepository<Appartement, Long> 
     @Query(value = "SELECT a FROM Appartement a where a.id = :#{#id} ")
     Appartement findAppId(@Param("id") Long id);
 
+    @Query(value = "SELECT a.* FROM appartement a JOIN complexe c ON a.complexe_id = c.id \n" +
+            "WHERE a.complexe_id = :#{#id}", nativeQuery = true)
+    List<Appartement> findAppartementsWithComplexeId(@Param("id") Long id);
+
+
 //    @Query(value = "select * FROM  appartement a JOIN complexe c ON a.complexe_id = c.id", nativeQuery = true)
 //    List<Appartement>  findWithAllArguments();
 }

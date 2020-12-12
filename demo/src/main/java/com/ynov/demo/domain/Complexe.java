@@ -4,12 +4,15 @@ package com.ynov.demo.domain;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @DynamicUpdate
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
 public class Complexe {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
@@ -25,6 +28,36 @@ public class Complexe {
     @JoinColumn(name="COMPLEXE_ID")
     private Set<Appartement> appartements;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(
+            name = "Complexe_My_Service",
+            joinColumns = { @JoinColumn(name = "complexe_id") },
+            inverseJoinColumns = { @JoinColumn(name = "my_service_id") }
+    )
+    private Set<MyService> myServices = new HashSet<>();
+
+    public Set<MyService> getMyServices() {
+        return myServices;
+    }
+
+    public void setMyServices(Set<MyService> myServices) {
+        this.myServices = myServices;
+    }
+
+//    @OneToMany(mappedBy = "complexe")
+//    Set<ComplexeMyService> complexeMyServices;
+//
+
+
+
+
+    public Long getId() {
+        return id;
+    }
 
     public String getPays() {
         return pays;
@@ -66,16 +99,6 @@ public class Complexe {
         this.type_lieu = type_lieu;
     }
 
-
-
-
-
-
-
-
-
-
-
     public String getName() {
         return name;
     }
@@ -99,6 +122,5 @@ public class Complexe {
     public Set<Appartement> getAppartements() {
         return appartements;
     }
-
 
 }

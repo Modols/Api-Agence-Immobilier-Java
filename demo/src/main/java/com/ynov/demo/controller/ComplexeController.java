@@ -16,12 +16,13 @@ public class ComplexeController {
         this.complexeservice = complexeservice;
     }
 
-
-
-    @GetMapping("/complexe")
+    @GetMapping("/complexes")
     @ResponseStatus(HttpStatus.OK)
     public List<Complexe> getComplexe() { return complexeservice.getComplexe(); }
 
+    @GetMapping("/complexes/appartements")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Complexe> getComplexeWithAppartements() { return complexeservice.getComplexeWithAppartements(); }
 
     @PostMapping("/complexe/create/{name}/{type_complexe}/{pays}/{region}/{adresse}/{gps}/{type_lieu}")
     @ResponseStatus(HttpStatus.OK)
@@ -35,4 +36,16 @@ public class ComplexeController {
         return complexeservice.updateComplexe(id, name, type_complexe, pays, region, adresse, gps, type_lieu);
     }
 
+    @DeleteMapping("/complexe/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteComplexe(@PathVariable Long id) {
+        complexeservice.deleteComplexe(id);
+    }
+
+
+//    @DeleteMapping("/complexe/service/add/{complex_id}/{my_service_id]")
+//    @ResponseStatus(HttpStatus.OK)
+//    public void addServiceToComplexe(@PathVariable Long complex_id, @PathVariable Long my_service_id) {
+//        complexeservice.addServiceToComplexe(complex_id, my_service_id);
+//    }
 }
