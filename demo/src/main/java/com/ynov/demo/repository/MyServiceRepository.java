@@ -1,6 +1,7 @@
 package com.ynov.demo.repository;
 
 import com.ynov.demo.domain.MyService;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,6 +15,9 @@ public interface MyServiceRepository extends JpaRepository<MyService, Long> {
     MyService findServiceById(@Param("id") Long id);
 
 
-//    @Query(value = "SELECT DISTINCT s FROM MyService s LEFT JOIN FETCH s.complexes")
-//    List<MyService> getAllServices();
+    @Query(value = "SELECT DISTINCT s FROM MyService s ")
+    List<MyService> getAllServices();
+
+//    @EntityGraph(attributePaths = { "complexes" })
+//    List<MyService> getByGroupName();
 }

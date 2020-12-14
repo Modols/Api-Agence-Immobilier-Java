@@ -29,8 +29,9 @@ public class MyServiceService {
 
     @Transactional
     public List<MyService> getServices() {
-        return myServiceRepository.findAll();
+        return myServiceRepository.getAllServices();
     }
+
 
     public MyService createService(String detail_service) {
         MyService myService = new MyService();

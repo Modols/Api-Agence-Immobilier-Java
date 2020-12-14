@@ -11,10 +11,11 @@ import java.util.List;
 
 @Repository
 public interface ComplexeRepository extends JpaRepository<Complexe, Long> {
-    @Query(value = "SELECT distinct c FROM Complexe c JOIN FETCH c.appartements  ")
+    @Query(value = "SELECT distinct c FROM Complexe c JOIN FETCH c.appartements LEFT Join FETCH c.myServices ")
     List<Complexe> getComplexeWithAppartements();
 
-    @Query(value = "SELECT DISTINCT c FROM Complexe c LEFT JOIN FETCH c.appartements")
+
+    @Query(value = "SELECT DISTINCT c FROM Complexe c  JOIN FETCH c.appartements  Join FETCH c.myServices")
     List<Complexe> getAllComplexe();
 
     @Query(value = "SELECT c FROM Complexe c where c.id = :#{#id} ")
@@ -34,3 +35,8 @@ public interface ComplexeRepository extends JpaRepository<Complexe, Long> {
 //    @Query(value = "SELECT a.id FROM complexe c JOIN appartement a ON c.id = a.complexe_id\n" +
 //                    "WHERE a.complexe_id = :#{#id}", nativeQuery = true)
 //    List<Long> findAppartementsWithComplexeId(@Param("id") Long id);
+
+
+//    @Query(value = "SELECT * FROM Complexe c \n" +
+//            "LEFT JOIN appartement a ON c.id = a.complexe_id", nativeQuery = true)
+//    List<Complexe> getComplexeWithAppartements();

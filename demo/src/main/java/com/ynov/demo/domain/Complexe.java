@@ -1,7 +1,10 @@
 package com.ynov.demo.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -26,9 +29,10 @@ public class Complexe {
 
     @OneToMany
     @JoinColumn(name="COMPLEXE_ID")
+//    @JsonIgnore
     private Set<Appartement> appartements;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
@@ -38,6 +42,8 @@ public class Complexe {
             joinColumns = { @JoinColumn(name = "complexe_id") },
             inverseJoinColumns = { @JoinColumn(name = "my_service_id") }
     )
+
+//    @JsonIgnore
     private Set<MyService> myServices = new HashSet<>();
 
     public Set<MyService> getMyServices() {
