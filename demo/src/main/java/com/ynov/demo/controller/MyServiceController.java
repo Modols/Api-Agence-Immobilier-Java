@@ -1,8 +1,11 @@
 package com.ynov.demo.controller;
 
+import com.ynov.demo.domain.Appartement;
+import com.ynov.demo.domain.Complexe;
 import com.ynov.demo.domain.MyService;
 import com.ynov.demo.service.MyServiceService;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,15 +25,19 @@ public class MyServiceController {
         return myServiceService.getServices();
     }
 
-    @PostMapping("/service/create/{detail_service}")
+    @PostMapping("/service/create/{detail_service}/{complexe_id}")
     @ResponseStatus(HttpStatus.OK)
-    public MyService createService(@PathVariable String detail_service) {
-        return myServiceService.createService(detail_service);
+    public MyService createService(@PathVariable String detail_service, @PathVariable Long complexe_id) {
+        return myServiceService.createService(detail_service, complexe_id);
     }
 
-    @PostMapping("/service/complexe/add/{service_id}/{complexe_id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void addServiceToComplexe(@PathVariable Long service_id, @PathVariable Long complexe_id) {
-        myServiceService.addServiceToComplexe(service_id, complexe_id);
-    }
+//    @PostMapping("/service/complexe/add/{service_id}/{complexe_id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public void addServiceToComplexe(@PathVariable Long service_id, @PathVariable Long complexe_id) {
+//        myServiceService.addServiceToComplexe(service_id, complexe_id);
+//    }
+
+
+
+
 }

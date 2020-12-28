@@ -27,9 +27,9 @@ public class ComplexeService {
         return complexes;
     }
 
-    public List<Complexe> getComplexeWithAppartements() {
-        return complexeRepository.getComplexeWithAppartements();
-    }
+//    public List<Complexe> getComplexeWithAppartements() {
+//        return complexeRepository.getComplexeWithAppartements();
+//    }
 
     public Complexe createComplexe(String name, String type_complexe, String pays, String region, String adresse, String gps, String type_lieu) {
         Complexe complexe = new Complexe();

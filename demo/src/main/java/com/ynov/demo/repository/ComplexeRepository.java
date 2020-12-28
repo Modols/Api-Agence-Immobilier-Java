@@ -11,11 +11,11 @@ import java.util.List;
 
 @Repository
 public interface ComplexeRepository extends JpaRepository<Complexe, Long> {
-    @Query(value = "SELECT distinct c FROM Complexe c JOIN FETCH c.appartements LEFT Join FETCH c.myServices ")
-    List<Complexe> getComplexeWithAppartements();
+//    @Query(value = "SELECT distinct c FROM Complexe c JOIN FETCH c.appartements LEFT Join FETCH c.myServices ")
+//    List<Complexe> getComplexeWithAppartements();
 
 
-    @Query(value = "SELECT DISTINCT c FROM Complexe c  JOIN FETCH c.appartements  Join FETCH c.myServices")
+    @Query(value = "SELECT DISTINCT c FROM Complexe c  JOIN FETCH c.appartements ")
     List<Complexe> getAllComplexe();
 
     @Query(value = "SELECT c FROM Complexe c where c.id = :#{#id} ")

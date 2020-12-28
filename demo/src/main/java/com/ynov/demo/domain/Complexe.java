@@ -29,30 +29,33 @@ public class Complexe {
 
     @OneToMany
     @JoinColumn(name="COMPLEXE_ID")
-//    @JsonIgnore
     private Set<Appartement> appartements;
 
-    @ManyToMany(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(
-            name = "Complexe_My_Service",
-            joinColumns = { @JoinColumn(name = "complexe_id") },
-            inverseJoinColumns = { @JoinColumn(name = "my_service_id") }
-    )
+    @OneToMany
+    @JoinColumn(name="COMPLEXE_ID")
+    private Set<MyService> myServices;
+
+//    @ManyToMany(
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            })
+//    @JoinTable(
+//            name = "Complexe_My_Service",
+//            joinColumns = { @JoinColumn(name = "complexe_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "my_service_id") }
+//    )
 
 //    @JsonIgnore
-    private Set<MyService> myServices = new HashSet<>();
-
-    public Set<MyService> getMyServices() {
-        return myServices;
-    }
-
-    public void setMyServices(Set<MyService> myServices) {
-        this.myServices = myServices;
-    }
+//    private Set<MyService> myServices = new HashSet<>();
+//
+//    public Set<MyService> getMyServices() {
+//        return myServices;
+//    }
+//
+//    public void setMyServices(Set<MyService> myServices) {
+//        this.myServices = myServices;
+//    }
 
 //    @OneToMany(mappedBy = "complexe")
 //    Set<ComplexeMyService> complexeMyServices;
@@ -127,6 +130,15 @@ public class Complexe {
 
     public Set<Appartement> getAppartements() {
         return appartements;
+    }
+
+
+    public Set<MyService> getMyServices() {
+        return myServices;
+    }
+
+    public void setMyServices(Set<MyService> myServices) {
+        this.myServices = myServices;
     }
 
 }

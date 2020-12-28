@@ -1,5 +1,6 @@
 package com.ynov.demo.service;
 
+import com.ynov.demo.domain.Appartement;
 import com.ynov.demo.domain.Complexe;
 import com.ynov.demo.domain.MyService;
 import com.ynov.demo.repository.ComplexeRepository;
@@ -17,8 +18,8 @@ import java.util.Set;
 
 @Service
 public class MyServiceService {
-    private MyServiceRepository myServiceRepository;
-    private ComplexeRepository complexeRepository;
+    private final MyServiceRepository myServiceRepository;
+    private final ComplexeRepository complexeRepository;
 
 
     public MyServiceService(MyServiceRepository myServiceRepository, ComplexeRepository complexeRepository) {
@@ -32,27 +33,52 @@ public class MyServiceService {
         return myServiceRepository.getAllServices();
     }
 
+    @Transactional
+    public MyService createService(String detail_service, Long complexe_id) {
+        Complexe complexe = complexeRepository.findComplexeById(complexe_id);
 
-    public MyService createService(String detail_service) {
         MyService myService = new MyService();
         myService.setDetailService(detail_service);
         myServiceRepository.save(myService);
+        complexe.getMyServices().add(myService);
+
         return myService;
     }
 
-    @Transactional
-    public void addServiceToComplexe(Long service_id, Long complexe_id) {
-        MyService myService = myServiceRepository.findServiceById(service_id);
+//    @Transactional
+//    public Appartement createApp(String name, int surface, int nb_couchage, boolean equipe_bebe,
+//                                 boolean climatisation, Long complexe_id) {
+//        Complexe complexe = complexeRepository.findComplexeById(complexe_id);
+//
+//        Appartement app = new Appartement();
+//        app.setSurface(surface);
+//        app.setName(name);
+//        app.setNb_couchage(nb_couchage);
+//        app.setClimatisation(equipe_bebe);
+//        app.setEquipe_bebe(climatisation);
 
-        Complexe complexe = complexeRepository.findComplexeById(complexe_id);
+//        appartementRepository.save(app);
+//        complexe.getAppartements().add(app);
+//        return app;
+//    }
 
-//        myService.getComplexes().add(complexe);
+//    @Transactional
+//    public void addServiceToComplexe(Long service_id, Long complexe_id) {
+//        MyService myService = myServiceRepository.findServiceById(service_id);
+//
+//        Complexe complexe = complexeRepository.findComplexeById(complexe_id);
+//
+////        myService.getComplexes().add(complexe);
+//
+//        complexe.getMyServices().add(myService);
+//
+//        myServiceRepository.save(myService);
+//        complexeRepository.save(complexe);
+//    }
 
-        complexe.getMyServices().add(myService);
 
-        myServiceRepository.save(myService);
-        complexeRepository.save(complexe);
-    }
+
+
 
 
 }

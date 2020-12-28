@@ -20,9 +20,9 @@ public class ComplexeController {
     @ResponseStatus(HttpStatus.OK)
     public List<Complexe> getComplexe() { return complexeservice.getComplexe(); }
 
-    @GetMapping("/complexes/appartements")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Complexe> getComplexeWithAppartements() { return complexeservice.getComplexeWithAppartements(); }
+//    @GetMapping("/complexes/appartements")
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Complexe> getComplexeWithAppartements() { return complexeservice.getComplexeWithAppartements(); }
 
     @PostMapping("/complexe/create/{name}/{type_complexe}/{pays}/{region}/{adresse}/{gps}/{type_lieu}")
     @ResponseStatus(HttpStatus.OK)
