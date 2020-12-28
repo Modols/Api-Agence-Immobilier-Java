@@ -1,6 +1,7 @@
 package com.ynov.demo.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
@@ -8,6 +9,10 @@ public class Appartement {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
+
+    @OneToMany
+    @JoinColumn(name="APPARTEMENT_ID")
+    private Set<ReservationDate> reservationDates;
 
     private String name;
     private int nb_couchage;
@@ -38,6 +43,12 @@ public class Appartement {
 
     public void setSurface(int surface) {this.surface = surface;}
 
+    public Set<ReservationDate> getReservationDates() {
+        return reservationDates;
+    }
 
+    public void setReservationDates(Set<ReservationDate> reservationDates) {
+        this.reservationDates = reservationDates;
+    }
 
 }

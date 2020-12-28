@@ -45,6 +45,47 @@ public class MyServiceService {
         return myService;
     }
 
+    @Transactional
+    public MyService updateService(Long id, String detail_service, Long complexe_id) {
+        Complexe oldComplexe = complexeRepository.findComplexeById(complexe_id);
+        MyService myService = myServiceRepository.findServiceById(id);
+        oldComplexe.getAppartements().remove(myService);
+        Complexe complexe = complexeRepository.findComplexeById(complexe_id);
+
+        myService.setDetailService(detail_service);
+        myServiceRepository.save(myService);
+        complexe.getMyServices().add(myService);
+
+        return myService;
+    }
+
+    public void deleteMyService(Long id) {
+        MyService myService = myServiceRepository.findServiceById(id);
+        myServiceRepository.delete(myService);
+    }
+
+//    public void deleteApp(Long id) {
+//        Appartement app = appartementRepository.findAppId(id);
+//        appartementRepository.delete(app);
+//    }
+
+//    @Transactional
+//    public Appartement updateApp(Long id, String name, int surface, int nb_couchage, boolean equipe_bebe,
+//                                 boolean climatisation, Long complexe_id) {
+//        Complexe oldComplexe = complexeRepository.findComplexeIdWithAnAppId(id);
+//        Appartement app = appartementRepository.findAppId(id);
+//        oldComplexe.getAppartements().remove(app);
+//        Complexe complexe = complexeRepository.findComplexeById(complexe_id);
+//        app.setSurface(surface);
+//        app.setName(name);
+//        app.setNb_couchage(nb_couchage);
+//        app.setClimatisation(equipe_bebe);
+//        app.setEquipe_bebe(climatisation);
+//        appartementRepository.save(app);
+//        complexe.getAppartements().add(app);
+//        return app;
+//    }
+
 //    @Transactional
 //    public Appartement createApp(String name, int surface, int nb_couchage, boolean equipe_bebe,
 //                                 boolean climatisation, Long complexe_id) {

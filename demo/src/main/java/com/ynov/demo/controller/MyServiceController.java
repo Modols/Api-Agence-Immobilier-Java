@@ -37,7 +37,17 @@ public class MyServiceController {
 //        myServiceService.addServiceToComplexe(service_id, complexe_id);
 //    }
 
+    @PutMapping("/service/update/{id}/{detail_service}/{complexe_id}")
+    @ResponseStatus(HttpStatus.OK)
+    public MyService updateService(@PathVariable Long id, @PathVariable String detail_service, @PathVariable Long complexe_id){
+        return myServiceService.updateService(id, detail_service, complexe_id);
+    }
 
+    @DeleteMapping("/service/delete/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteMyService(@PathVariable Long id) {
+        myServiceService.deleteMyService(id);
+    }
 
 
 }
