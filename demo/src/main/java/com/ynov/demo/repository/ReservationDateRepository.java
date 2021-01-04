@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReservationDateRepository extends JpaRepository<ReservationDate, Long> {
-
     @Query(value = "SELECT r FROM ReservationDate r where r.id = :#{#id} ")
     ReservationDate findReservationDateById(@Param("id") Long id);
 }

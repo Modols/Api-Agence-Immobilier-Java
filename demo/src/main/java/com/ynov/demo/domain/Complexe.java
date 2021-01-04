@@ -15,7 +15,6 @@ import java.util.Set;
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
 public class Complexe {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
@@ -34,35 +33,6 @@ public class Complexe {
     @OneToMany
     @JoinColumn(name="COMPLEXE_ID")
     private Set<MyService> myServices;
-
-//    @ManyToMany(
-//            cascade = {
-//                    CascadeType.PERSIST,
-//                    CascadeType.MERGE
-//            })
-//    @JoinTable(
-//            name = "Complexe_My_Service",
-//            joinColumns = { @JoinColumn(name = "complexe_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "my_service_id") }
-//    )
-
-//    @JsonIgnore
-//    private Set<MyService> myServices = new HashSet<>();
-//
-//    public Set<MyService> getMyServices() {
-//        return myServices;
-//    }
-//
-//    public void setMyServices(Set<MyService> myServices) {
-//        this.myServices = myServices;
-//    }
-
-//    @OneToMany(mappedBy = "complexe")
-//    Set<ComplexeMyService> complexeMyServices;
-//
-
-
-
 
     public Long getId() {
         return id;
@@ -131,7 +101,6 @@ public class Complexe {
     public Set<Appartement> getAppartements() {
         return appartements;
     }
-
 
     public Set<MyService> getMyServices() {
         return myServices;

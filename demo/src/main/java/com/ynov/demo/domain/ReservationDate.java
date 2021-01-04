@@ -33,10 +33,7 @@ public class ReservationDate {
     private LocalDate beginDate;
     private LocalDate endDate;
 
-
     public Long getId() {
         return id;
     }
-
-
 }

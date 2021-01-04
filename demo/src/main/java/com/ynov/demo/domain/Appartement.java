@@ -29,12 +29,9 @@ public class Appartement {
         this.price = price;
     }
 
-
-
     public boolean getEquipe_bebe() {return equipe_bebe;}
 
     public boolean getClimatisation() {return climatisation;}
-
 
     public void setEquipe_bebe(boolean equipe_bebe) {this.equipe_bebe = equipe_bebe;}
 

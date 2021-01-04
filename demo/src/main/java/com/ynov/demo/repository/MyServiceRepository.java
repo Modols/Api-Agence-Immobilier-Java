@@ -14,10 +14,6 @@ public interface MyServiceRepository extends JpaRepository<MyService, Long> {
     @Query(value = "SELECT s FROM MyService s where s.id = :#{#id} ")
     MyService findServiceById(@Param("id") Long id);
 
-
     @Query(value = "SELECT DISTINCT s FROM MyService s ")
     List<MyService> getAllServices();
-
-//    @EntityGraph(attributePaths = { "complexes" })
-//    List<MyService> getByGroupName();
 }

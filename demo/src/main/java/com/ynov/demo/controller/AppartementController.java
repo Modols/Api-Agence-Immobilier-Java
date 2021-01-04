@@ -2,7 +2,6 @@ package com.ynov.demo.controller;
 
 import com.ynov.demo.domain.Appartement;
 import com.ynov.demo.domain.AppartementDto;
-import com.ynov.demo.domain.Complexe;
 import com.ynov.demo.service.AppartementService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;

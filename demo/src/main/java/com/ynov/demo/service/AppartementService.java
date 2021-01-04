@@ -18,7 +18,6 @@ public class AppartementService {
     private final AppartementRepository appartementRepository;
     private ComplexeRepository complexeRepository;
 
-
     public AppartementService(AppartementRepository appartementRepository, ComplexeRepository complexeRepository) {
         this.appartementRepository = appartementRepository;
         this.complexeRepository = complexeRepository;
@@ -91,4 +90,3 @@ public class AppartementService {
         return appartementRepository.findAppartementDto(beginDate, endDate, region);
     }
 }
-//findAppartementWhithIdAndPrice

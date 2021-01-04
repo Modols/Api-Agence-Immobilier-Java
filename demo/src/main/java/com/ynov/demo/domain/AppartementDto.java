@@ -50,6 +50,4 @@ public class AppartementDto {
         this.type_lieu = type_lieu;
         this.price = price;
     }
-
-
 }

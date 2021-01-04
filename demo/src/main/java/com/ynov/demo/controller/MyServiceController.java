@@ -1,11 +1,8 @@
 package com.ynov.demo.controller;
 
-import com.ynov.demo.domain.Appartement;
-import com.ynov.demo.domain.Complexe;
 import com.ynov.demo.domain.MyService;
 import com.ynov.demo.service.MyServiceService;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
