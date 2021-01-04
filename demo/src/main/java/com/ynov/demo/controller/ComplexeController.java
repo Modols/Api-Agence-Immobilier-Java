@@ -20,10 +20,6 @@ public class ComplexeController {
     @ResponseStatus(HttpStatus.OK)
     public List<Complexe> getComplexe() { return complexeservice.getComplexe(); }
 
-//    @GetMapping("/complexes/appartements")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Complexe> getComplexeWithAppartements() { return complexeservice.getComplexeWithAppartements(); }
-
     @PostMapping("/complexe/create/{name}/{type_complexe}/{pays}/{region}/{adresse}/{gps}/{type_lieu}")
     @ResponseStatus(HttpStatus.OK)
     public Complexe createComplexe(@PathVariable String name, @PathVariable String type_complexe, @PathVariable String pays, @PathVariable String region, @PathVariable String adresse, @PathVariable String gps, @PathVariable String type_lieu) {
@@ -42,10 +38,10 @@ public class ComplexeController {
         complexeservice.deleteComplexe(id);
     }
 
+    @GetMapping("/complexe/getAllComplexeForAPays/{pays}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Complexe> getComplexeForAPays(@PathVariable String pays) {
+        return complexeservice.getComplexeForAPays(pays);
+    }
 
-//    @DeleteMapping("/complexe/service/add/{complex_id}/{my_service_id]")
-//    @ResponseStatus(HttpStatus.OK)
-//    public void addServiceToComplexe(@PathVariable Long complex_id, @PathVariable Long my_service_id) {
-//        complexeservice.addServiceToComplexe(complex_id, my_service_id);
-//    }
 }

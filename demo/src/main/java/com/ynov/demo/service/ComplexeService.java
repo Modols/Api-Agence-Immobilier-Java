@@ -73,6 +73,14 @@ public class ComplexeService {
         complexeRepository.delete(complexe);
     }
 
+
+
+    public List<Complexe> getComplexeForAPays(String pays) {
+        return complexeRepository.findAllComplexeForAPays(pays);
+    }
+
+
+
     public void addServiceToComplexe(Long complex_id, Long my_service_id) {
 //        Set<>
 

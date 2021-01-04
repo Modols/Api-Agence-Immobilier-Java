@@ -14,8 +14,11 @@ public interface ComplexeRepository extends JpaRepository<Complexe, Long> {
 //    @Query(value = "SELECT distinct c FROM Complexe c JOIN FETCH c.appartements LEFT Join FETCH c.myServices ")
 //    List<Complexe> getComplexeWithAppartements();
 
+//         tous les Village Vacances/résidence pour un pays donnée (1 points)
+    @Query(value = "SELECT c FROM Complexe c where c.pays = :#{#pays} ")
+    List<Complexe> findAllComplexeForAPays(@Param("pays") String pays);
 
-    @Query(value = "SELECT DISTINCT c FROM Complexe c  JOIN FETCH c.appartements ")
+    @Query(value = "SELECT DISTINCT c FROM Complexe c   ")
     List<Complexe> getAllComplexe();
 
     @Query(value = "SELECT c FROM Complexe c where c.id = :#{#id} ")

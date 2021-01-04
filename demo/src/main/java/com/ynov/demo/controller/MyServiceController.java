@@ -31,12 +31,6 @@ public class MyServiceController {
         return myServiceService.createService(detail_service, complexe_id);
     }
 
-//    @PostMapping("/service/complexe/add/{service_id}/{complexe_id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public void addServiceToComplexe(@PathVariable Long service_id, @PathVariable Long complexe_id) {
-//        myServiceService.addServiceToComplexe(service_id, complexe_id);
-//    }
-
     @PutMapping("/service/update/{id}/{detail_service}/{complexe_id}")
     @ResponseStatus(HttpStatus.OK)
     public MyService updateService(@PathVariable Long id, @PathVariable String detail_service, @PathVariable Long complexe_id){
@@ -48,6 +42,5 @@ public class MyServiceController {
     public void deleteMyService(@PathVariable Long id) {
         myServiceService.deleteMyService(id);
     }
-
 
 }

@@ -19,6 +19,17 @@ public class Appartement {
     private int surface;
     private boolean equipe_bebe;
     private boolean climatisation;
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+
 
     public boolean getEquipe_bebe() {return equipe_bebe;}
 
